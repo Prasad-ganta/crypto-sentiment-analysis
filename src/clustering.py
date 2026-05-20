@@ -1,7 +1,11 @@
+import os
+
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
+
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 
 def cluster_traders(df):
 
@@ -35,6 +39,16 @@ def cluster_traders(df):
         kmeans.fit_predict(scaled)
     )
 
+    os.makedirs(
+        'visuals',
+        exist_ok=True
+    )
+
+    os.makedirs(
+        'outputs',
+        exist_ok=True
+    )
+
     plt.figure(figsize=(10,6))
 
     sns.scatterplot(
@@ -50,7 +64,8 @@ def cluster_traders(df):
     )
 
     trader_stats.to_csv(
-        'outputs/clustered_traders.csv'
+        'outputs/clustered_traders.csv',
+        index=True
     )
 
     return trader_stats
