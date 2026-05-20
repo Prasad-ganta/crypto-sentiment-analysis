@@ -1,10 +1,14 @@
+import os
 import pandas as pd
+
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (
     classification_report,
     accuracy_score
 )
+
 from xgboost import XGBClassifier
+
 
 def train_model(df):
 
@@ -69,9 +73,14 @@ def train_model(df):
         random_state=42
     )
 
-    model.fit(X_train, y_train)
+    model.fit(
+        X_train,
+        y_train
+    )
 
-    predictions = model.predict(X_test)
+    predictions = model.predict(
+        X_test
+    )
 
     accuracy = accuracy_score(
         y_test,
@@ -87,6 +96,11 @@ def train_model(df):
         'Actual': y_test,
         'Predicted': predictions
     })
+
+    os.makedirs(
+        'outputs',
+        exist_ok=True
+    )
 
     prediction_df.to_csv(
         'outputs/predictions.csv',
