@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+outputs/
+reports/
+visuals/
+.idea/
+*.pyc
+*.pkl
+*.csv
