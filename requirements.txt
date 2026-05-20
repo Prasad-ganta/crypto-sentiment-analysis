@@ -2,7 +2,8 @@ pandas
 numpy
 matplotlib
 seaborn
-plotly
 scikit-learn
+xgboost
+streamlit
 scipy
-jupyter 
+fpdf
